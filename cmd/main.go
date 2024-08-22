@@ -1,11 +1,11 @@
 package main
 
 import (
-	"net/http"
 	"os"
 
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
+	"sittellalab.com.au/internal/handlers"
 )
 
 func init() {
@@ -17,9 +17,7 @@ func init() {
 func main() {
 	e := echo.New()
 
-	e.GET("/", func(ctx echo.Context) error {
-		return ctx.String(http.StatusOK, "Hello, World!")
-	})
+	handlers.InitHandlers(e)
 
 	e.Logger.Fatal(e.Start(":" + os.Getenv("PORT")))
 }
