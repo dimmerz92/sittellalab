@@ -1,6 +1,7 @@
 :root {
 	--orange: #ff6600;
 	--blue: #002642;
+	--lightblue: #004a80;
 	--white: #e5e5e5;
 	font-family: monospace;
 }
@@ -131,7 +132,7 @@ h1, h2 {
 footer {
 	display: grid;
 	gap: 2rem;
-	background: var(--blue);
+	background: var(--lightblue);
 	color: var(--white);
 	padding: 4rem 2rem;
 }
