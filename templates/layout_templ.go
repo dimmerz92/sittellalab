@@ -49,7 +49,7 @@ func Layout(stylesheets []string) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<script src=\"/static/js/functions.js\"></script><title>Sittella Lab | Freelance Web Development | Perth, Western Australia</title></head><body>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<script src=\"/static/js/functions.js\"></script><title>Sittella Lab | Freelance Web Development | Perth, Western Australia</title></head><body><input id=\"nav\" type=\"checkbox\"> <label id=\"hamburger\" for=\"nav\"><div class=\"left\"><div class=\"line top\"></div><div class=\"line mid\"></div><div class=\"line bot\"></div></div><div class=\"right\"><div class=\"line top\"></div><div class=\"line mid\"></div><div class=\"line bot\"></div></div></label><nav><ul><li><a href=\"/\">Home</a></li><li><a href=\"/about\">About Me</a></li><li><a href=\"/contact\">Contact</a></li></ul></nav>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

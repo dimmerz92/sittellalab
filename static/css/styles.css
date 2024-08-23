@@ -10,6 +10,96 @@
 	margin: 0;
 }
 
+nav {
+	position: fixed;
+	z-index: 998;
+	top: 0;
+	left: 0;
+	right: 0;
+	overflow: hidden;
+	background: #000000AA;
+	height: 0;
+	transition-duration: 0.5s;
+}
+
+nav ul {
+	display: grid;
+	grid-auto-rows: 1fr;
+	justify-items: center;
+	align-items: center;
+	font-size: x-large;
+	list-style: none;
+	overflow: hidden;
+	height: 100%;
+	padding: 25svh 0;
+}
+
+nav a {
+	color: var(--white);
+	text-decoration: none;
+}
+
+nav a:hover {
+	color: var(--orange);
+}
+
+#nav {
+	display: none;
+}
+
+#nav:checked ~ nav {
+	height: 100svh;
+}
+
+#hamburger {
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 999;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	background: #000000AA;
+	border-bottom-left-radius: 100%;
+	cursor: pointer;
+	padding: 1rem 2rem 2rem 3rem;
+	transition-duration: 0.1s;
+	transition-delay: 0.3s;
+}
+
+#nav:checked + #hamburger {
+	background: none;
+	transition-delay: 0s;
+}
+
+#hamburger .line {
+	background: var(--white);
+	height: 0.3rem;
+	width: 1.5rem;
+	margin-block: 0.75rem;
+	transition-duration: 0.5s;
+}
+
+#nav:checked + #hamburger .mid {
+	transition-duration: 0s;
+	background: none;
+}
+
+#nav:checked + #hamburger .left .top {
+	transform: rotateZ(45deg) scaleX(1.4) translate(0.25rem, 0.25rem);
+}
+
+#nav:checked + #hamburger .left .bot {
+	transform: rotateZ(-45deg) scaleX(1.4) translate(0.25rem, -0.25rem);
+}
+
+#nav:checked + #hamburger .right .top {
+	transform: rotateZ(-45deg) scaleX(1.4) translate(-0.25rem, 0.25rem);
+}
+
+#nav:checked + #hamburger .right .bot {
+	transform: rotateZ(45deg) scaleX(1.4) translate(-0.25rem, -0.25rem);
+}
+
 h1, h2 {
 	font-size: 4rem;
 	@media screen and (max-width: 1023px) {
