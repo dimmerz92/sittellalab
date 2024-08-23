@@ -4,10 +4,7 @@ templ Home() {
 	@Layout([]string{"/static/css/home.css"}) {
 		<header>
 			<div class="left">
-				<div class="logo">
-					<img src="/static/imgs/sittella_logo.svg" height="75px" width="75px" alt="Sittella Lab Logo"/>
-					<p>Sittella <span style="color: var(--orange);">Lab</span></p>
-				</div>
+				@Logo()
 				<div>
 					<h1></h1>
 					<script>
