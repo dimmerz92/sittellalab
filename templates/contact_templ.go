@@ -8,7 +8,12 @@ package templates
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-func Contact() templ.Component {
+type ContactProps struct {
+	Error   string
+	Success bool
+}
+
+func Contact(props ContactProps) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
@@ -46,7 +51,41 @@ func Contact() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</a></div><div class=\"right\"><h1>Contact Us</h1><form action=\"/contact\" method=\"post\"><div class=\"two-col\"><label class=\"input\">First Name <input type=\"text\" name=\"firstname\" required></label> <label class=\"input\">Last Name <input type=\"text\" name=\"lastname\" required></label></div><div class=\"two-col\"><label class=\"input\">Email <input type=\"email\" name=\"email\" required></label> <label class=\"input\">Enquiry Type <select><option value=\"web\">Web Development</option> <option value=\"data\">Data Analytics</option> <option value=\"consult\">Consulting</option> <option value=\"other\">Other</option></select></label></div><label class=\"input\">Message <span style=\"font-size: small; color: var(--orange);\">Not sure what to say? Tap the message bubble to chat with the AI assistant!</span> <textarea name=\"message\" required></textarea></label> <button type=\"submit\">Send Enquiry</button></form></div></section>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</a></div><div class=\"right\"><h1>Contact Us</h1>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			if !props.Success {
+				if props.Error != "" {
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p style=\"color: firebrick; text-align: center;\">")
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
+					var templ_7745c5c3_Var3 string
+					templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(props.Error)
+					if templ_7745c5c3_Err != nil {
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/contact.templ`, Line: 20, Col: 68}
+					}
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p>")
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <form action=\"/contact\" method=\"post\"><div class=\"two-col\"><label class=\"input\">First Name <input type=\"text\" name=\"firstname\" required></label> <label class=\"input\">Last Name <input type=\"text\" name=\"lastname\" required></label></div><div class=\"two-col\"><label class=\"input\">Email <input type=\"email\" name=\"email\" required></label> <label class=\"input\">Enquiry Type <select name=\"enquiry-type\"><option value=\"web\">Web Development</option> <option value=\"data\">Data Analytics</option> <option value=\"consult\">Consulting</option> <option value=\"other\">Other</option></select></label></div><label class=\"input\">Message <span style=\"font-size: small; color: var(--orange);\">Not sure what to say? Tap the message bubble to chat with the AI assistant!</span> <textarea name=\"message\" required></textarea></label> <button type=\"submit\">Send Enquiry</button></form>")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			} else {
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p style=\"text-align: center; font-size: x-large;\">Your message has been sent, we will get back to you as soon as possible.</p>")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></section>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
