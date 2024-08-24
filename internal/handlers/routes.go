@@ -6,4 +6,5 @@ func InitHandlers(e *echo.Echo) {
 	e.Static("/static", "static")
 	e.GET("/", Home)
 	e.GET("/contact", Contact)
+	e.GET("/services", Services)
 }
