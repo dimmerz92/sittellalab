@@ -1,0 +1,137 @@
+package templates
+
+type Enquiry struct {
+	Url         string
+	FirstName   string
+	LastName    string
+	Email       string
+	EnquiryType string
+	Message     string
+}
+
+templ EnquiryEmail(props Enquiry) {
+	<p><span style="font-weight: bold;">First Name:</span> { props.FirstName }</p>
+	<p><span style="font-weight: bold;">Last Name:</span> { props.LastName }</p>
+	<p><span style="font-weight: bold;">Email:</span> { props.Email }</p>
+	<p><span style="font-weight: bold;">Enquiry Type:</span> { props.EnquiryType }</p>
+	<p><span style="font-weight: bold;">Message</span> { props.Message }</p>
+}
+
+templ EnquiryResponse(props Enquiry) {
+	<style>
+		h1, h2 {
+			font-size: 4rem;
+			@media screen and (max-width: 1023px) {
+				font-size: 2rem;
+			}
+		}
+
+		.logo {
+			background: #002642;
+			color: #e5e5e5;
+			padding: 2rem;
+		}
+
+		* {
+			font-family: monospace;
+		}
+		.cta-button {
+			text-decoration: none;
+			font-weight: bold;
+			border-radius: 8px;
+			background: #ff6600;
+			color: #e5e5e5;
+			width: fit-content;
+			padding: 1rem 1.5rem;
+		}
+
+		.cta-button:hover {
+			opacity: 0.9;
+		}
+
+		.footer {
+			display: grid;
+			gap: 2rem;
+			background: #004a80;
+			color: #e5e5e5;
+			padding: 4rem 2rem;
+		}
+
+		.footer a {
+			color: #e5e5e5;
+			text-decoration: none;
+		}
+
+		.footer a:hover {
+			color: #ff6600;
+		}
+
+		.footer .right {
+			display: grid;
+			text-align: center;
+			margin-inline: auto;
+			@media screen and (min-height: 1024px) {
+				padding-left: 50%;
+			}
+		}
+
+		.socials {
+			display: flex;
+			gap: 1rem;
+			padding-block: 0.5rem;
+		}
+
+		.socials img {
+			height: 32px;
+			width: 32px;
+		}
+	</style>
+	<div style="display: grid; grid-template-rows: auto 1fr auto;">
+		<div class="logo">
+			<a style="display: grid; justify-content: center; text-align: center; text-decoration: none; color: #e5e5e5;" href={ templ.SafeURL(props.Url) }>
+				<img src={ props.Url + "/static/imgs/sittella_logo.svg" } height="75px" width="75px" alt="sittella lab logo"/>
+				Sittella <span style="color: #ff6600;">Lab</span>
+			</a>
+		</div>
+		<div style="padding: 2rem;">
+			<p>Hi {  props.FirstName }, thank you for your enquiry.</p>
+			<p>
+				Your email has been forwarded to Andrew at Sittella Lab. If you feel you left anything out, feel free to add
+				further context by replying to this email.
+			</p>
+			<p>Below is a copy of your enquiry:</p>
+			<p><span style="font-weight: bold;">First Name:</span> { props.FirstName }</p>
+			<p><span style="font-weight: bold;">Last Name:</span> { props.LastName }</p>
+			<p><span style="font-weight: bold;">Email:</span> { props.Email }</p>
+			<p><span style="font-weight: bold;">Enquiry Type:</span> { props.EnquiryType }</p>
+			<p><span style="font-weight: bold;">Message:</span> { props.Message }</p>
+		</div>
+		<div class="footer">
+			<h2>Let's Collaborate.</h2>
+			<div class="right">
+				<h3>Socials</h3>
+				<div class="socials">
+					<a href="https://au.linkedin.com/company/sittella-lab" target="_blank">
+						<img src={ props.Url + "/static/imgs/linkedin.svg" } height="32px" width="32px" alt="linkedin icon"/>
+					</a>
+					<a href="https://github.com/dimmerz92" target="_blank">
+						<img src={ props.Url + "/static/imgs/github.svg" } height="32px" width="32px" alt="github icon"/>
+					</a>
+				</div>
+			</div>
+			<div class="right">
+				<h3>Send an Enquiry</h3>
+				<a href={ templ.SafeURL(props.Url + "/contact") }>Work with me</a>
+			</div>
+			<div class="right">
+				<h3>Email Us</h3>
+				<a href="mailto:hello@sittellalab.com.au">hello@sittellalab.com.au</a>
+			</div>
+			<p class="right">
+				Sittella Lab © 2024. All rights reserved.
+				<br/>
+				<a href="https://abr.business.gov.au/ABN/View?abn=69563454673" target="_blank">69 563 454 673</a>
+			</p>
+		</div>
+	</div>
+}
